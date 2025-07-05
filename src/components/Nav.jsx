@@ -3,7 +3,6 @@ import { MdFastfood } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { dataContext } from "../context/UserContext";
-import { useSelector } from "react-redux";
 
 const Nav = () => {
   let { input, setInput, foodCategory, setFoodCategory, showCard, setShowCard } =
@@ -26,13 +25,11 @@ const Nav = () => {
   // This allows for case-insensitive search functionality
   // Filter foodCategory based on the input value
 
-  let items = useSelector(state => state.cart)
-  console.log(items)
+
 
   return (
     // Navigation bar component
     // Contains a logo, search bar, and shopping bag icon
-    // App LOGO: Fast Food Icon
     <div className="w-full h-[130px] bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-between px-12 ">
       <div className="w-15 h-15 flex items-center justify-center bg-white shadow-md rounded-full">
         <MdFastfood className="w-7 h-7 text-blue-500" />
@@ -57,7 +54,7 @@ const Nav = () => {
       {/* Shopping bag icon: A clickable icon that shows the number of items in the cart */}
       <div className="w-15 h-15 bg-white flex justify-center items-center shadow-md rounded-full relative hover:scale-105 transition-transform duration-300" onClick={() => setShowCard(!showCard)}>
         <span className="absolute text-blue-500 top-0 right-3 font-semibold ">
-          {items.length}
+          0
         </span>
         <FiShoppingBag className="w-7 h-7 text-blue-500" />
       </div>

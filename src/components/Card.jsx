@@ -1,8 +1,7 @@
 import React from "react";
 import { LuLeaf } from "react-icons/lu";
 import { GiChickenOven } from "react-icons/gi";
-import { useDispatch } from "react-redux";
-import { AddItem } from "../redux/cardSlice";
+
 
 const Card = ({ values }) => {
   const { id, food_name, food_image, price, food_type } = values;

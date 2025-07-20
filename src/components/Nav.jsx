@@ -27,7 +27,7 @@ const Nav = () => {
   // Filter foodCategory based on the input value
   
   let items = useSelector(state => state.cart)
-
+  console.log(items)
 
   return (
     // Navigation bar component

@@ -1,8 +1,7 @@
 import React, { createContext, useState } from "react";
 import { food_items } from "../food.js";
 
-// Create a context to hold user data
-// This context will be used to share data across components without prop drilling
+// Create a context
 export const dataContext = createContext();
 
 const UserContext = ({ children }) => {

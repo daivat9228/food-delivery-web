@@ -1,10 +1,13 @@
 import React from "react";
 import { LuLeaf } from "react-icons/lu";
 import { GiChickenOven } from "react-icons/gi";
+import {useDispatch} from "react-redux";
+import { AddItem } from "../redux/cartSlice";
 
 
 const Card = ({ values }) => {
-  const { id, food_name, food_image, price, food_type } = values;
+  const {id, food_name, food_image, price, food_type } = values;
+  let dispatch = useDispatch()
 
   return (
     <>
@@ -37,7 +40,7 @@ const Card = ({ values }) => {
             </span>
           </div>
         </div>
-        <button className="w-full p-3 rounded-full bg-blue-500  font-semibold text-white hover:scale-[1.02] active:scale-95 transition-all duration-200">
+        <button className="w-full p-3 rounded-full bg-blue-500  font-semibold text-white hover:scale-[1.02] active:scale-95 transition-all duration-200" onClick={() => dispatch(AddItem({id: id, name: food_name, image: food_image, price: price, qty: 1}))} >
           Add to Cart
         </button>
       </div>

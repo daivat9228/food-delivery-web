@@ -3,6 +3,7 @@ import { MdFastfood } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { dataContext } from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
   let { input, setInput, foodCategory, setFoodCategory, showCard, setShowCard } =
@@ -15,7 +16,7 @@ const Nav = () => {
   useEffect(() => {
     // Filter foodCategory based on the input value
     const filteredItems = foodCategory.filter((item) =>  item.food_name.includes(input) ||
-      item.food_name.toLowerCase().includes(input.toLowerCase())
+      item.food_name.toLowerCase().includes(input)
     );
     // Update foodCategory with the filtered items
     setFoodCategory(filteredItems);
@@ -24,7 +25,8 @@ const Nav = () => {
   // Convert food_name to lowercase and check if it includes the input value
   // This allows for case-insensitive search functionality
   // Filter foodCategory based on the input value
-
+  
+  let items = useSelector(state => state.cart)
 
 
   return (
@@ -47,14 +49,14 @@ const Nav = () => {
           type="text"
           placeholder="search item..."
           className="w-full outline-none text-[18px] text-gray-700 bg-transparent placeholder:text-gray-400"
-          onChange={(e) => setInput(e.target.value)} // Update input state on change
-          value={input} // Bind input state to the input field
+          onChange={(e) => setInput(e.target.value)}    // Update input state on change
+          value={input}       // Bind input state to the input field
         />
       </form>
       {/* Shopping bag icon: A clickable icon that shows the number of items in the cart */}
       <div className="w-15 h-15 bg-white flex justify-center items-center shadow-md rounded-full relative hover:scale-105 transition-transform duration-300" onClick={() => setShowCard(!showCard)}>
         <span className="absolute text-blue-500 top-0 right-3 font-semibold ">
-          0
+          {items.length}
         </span>
         <FiShoppingBag className="w-7 h-7 text-blue-500" />
       </div>
